@@ -1,0 +1,47 @@
+{
+  "name": "@gasolinaradar/dgeg-collector",
+  "version": "1.0.0",
+  "description": "Collector for the official DGEG fuel station dataset (Portugal) returning normalized fuel stations",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "LEGAL.md",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gasolinaradar/dgeg-collector.git"
+  },
+  "homepage": "https://github.com/gasolinaradar/dgeg-collector#readme",
+  "bugs": {
+    "url": "https://github.com/gasolinaradar/dgeg-collector/issues"
+  },
+  "scripts": {
+    "test": "node --test test/collector.test.js",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "dgeg",
+    "fuel",
+    "stations",
+    "gasolineras",
+    "portugal",
+    "combustiveis",
+    "collector"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "axios": "^1.13.2"
+  }
+}
