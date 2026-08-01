@@ -1,6 +1,6 @@
 {
   "name": "@gasolinaradar/dgeg-collector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Collector for the official DGEG fuel station dataset (Portugal) returning normalized fuel stations",
   "main": "src/index.js",
   "exports": {
@@ -26,6 +26,7 @@
   },
   "scripts": {
     "test": "node --test test/collector.test.js",
+    "test:live": "node --test test/live.test.js",
     "prepublishOnly": "npm test"
   },
   "keywords": [

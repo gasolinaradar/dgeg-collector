@@ -232,7 +232,8 @@ Este proyecto **no está afiliado** al Estado portugués ni a la DGEG. Los datos
 ## Tests
 
 ```bash
-npm test
+npm test        # unit tests (mocked HTTP)
+npm run test:live  # live tests hitting the real API (network required; list + detail sample)
 ```
 
 ---
