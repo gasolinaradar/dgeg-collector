@@ -1,10 +1,19 @@
+<div align="center">
+
 # @gasolinaradar/dgeg-collector
 
-<!-- EN -->
+**Collector for the official DGEG fuel-price dataset (Portugal).**
+**Collector del dataset oficial de precios de carburantes de la DGEG (Portugal).**
+
+[![npm version](https://img.shields.io/npm/v/%40gasolinaradar%2Fdgeg-collector.svg)](https://www.npmjs.com/package/@gasolinaradar/dgeg-collector)
+[![license](https://img.shields.io/npm/l/%40gasolinaradar%2Fdgeg-collector.svg)](./LICENSE)
+[![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/gasolinaradar/dgeg-collector/issues)
+[![country](https://img.shields.io/badge/country-Portugal-006600.svg)](https://www.dgeg.gov.pt)
+
+</div>
 
 A Node.js collector for the **official DGEG fuel-price dataset** (Portugal). It downloads all fuel stations from the public REST API of the Portuguese Directorate-General for Energy and Geology (DGEG), enriches each station with its detail endpoint, and returns a **normalized, ready-to-use** array of stations.
-
-<!-- ES -->
 
 Collector de Node.js para el **dataset oficial de precios de carburantes de la DGEG** (Portugal). Descarga todas las estaciones de servicio desde el API REST público de la Dirección General de Energía y Geología portuguesa (DGEG), enriquece cada estación con su endpoint de detalle y devuelve un array de estaciones **normalizado y listo para usar**.
 
@@ -112,7 +121,9 @@ const stations = await dgegCollector.fetch({
 
 ---
 
-## Options / Opciones
+## Configuration / Configuración
+
+**EN:**
 
 | Option               | Type                            | Default | Description                                                                                             |
 | -------------------- | ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
@@ -124,6 +135,8 @@ const stations = await dgegCollector.fetch({
 | `retries`            | `number`                        | `3`     | Retry attempts before failing.                                                                          |
 | `logger`             | `{ info, warn, debug }`         | `console` | Injectable logger.                                                                                    |
 | `httpClient`         | `{ get(url, opts) }`            | `axios` | Injectable HTTP client (useful for tests or custom TLS settings).                                       |
+
+**ES:**
 
 | Opción               | Tipo                            | Por defecto | Descripción                                                                                            |
 | -------------------- | ------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------ |
@@ -142,7 +155,13 @@ const stations = await dgegCollector.fetch({
 
 ---
 
-## Output schema / Esquema de salida
+## Station contract / Contrato de estación
+
+The collector returned by `createDgegCollector` matches the common ingestion contract:
+
+```js
+{ name: 'dgeg', country: 'PT', fetch(context) }
+```
 
 Each normalized station looks like this / Cada estación normalizada tiene esta forma:
 
@@ -213,7 +232,28 @@ Este proyecto **no está afiliado** al Estado portugués ni a la DGEG. Los datos
 
 ---
 
-## Legal / Legal
+## Testing / Pruebas
+
+```bash
+npm test           # unit tests (mocked HTTP)
+npm run test:live  # live tests hitting the real API (network required; list + detail sample)
+```
+
+---
+
+## Ecosystem / Ecosistema
+
+- **Repository:** [github.com/gasolinaradar/dgeg-collector](https://github.com/gasolinaradar/dgeg-collector)
+- **Homepage:** [github.com/gasolinaradar/dgeg-collector#readme](https://github.com/gasolinaradar/dgeg-collector#readme)
+- **Issues:** [github.com/gasolinaradar/dgeg-collector/issues](https://github.com/gasolinaradar/dgeg-collector/issues)
+
+---
+
+## License / Licencia
+
+**EN:** MIT. See [LICENSE](./LICENSE). The DGEG data is **not** covered by this license; it is public information of the Portuguese State.
+
+**ES:** MIT. Consulta [LICENSE](./LICENSE). Los datos de la DGEG **no** están cubiertos por esta licencia; son información pública del Estado portugués.
 
 **EN:**
 
@@ -226,20 +266,3 @@ Este proyecto **no está afiliado** al Estado portugués ni a la DGEG. Los datos
 - [LEGAL.md](./LEGAL.md) — Aviso legal y descargo de responsabilidad (bilingüe).
 - [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) — Atribución de datos y licencias de terceros.
 - [LICENSE](./LICENSE) — Licencia MIT (aplica a este software, **no** a los datos subyacentes de la DGEG).
-
----
-
-## Tests
-
-```bash
-npm test        # unit tests (mocked HTTP)
-npm run test:live  # live tests hitting the real API (network required; list + detail sample)
-```
-
----
-
-## License / Licencia
-
-**EN:** MIT. See [LICENSE](./LICENSE). The DGEG data is **not** covered by this license; it is public information of the Portuguese State.
-
-**ES:** MIT. Consulta [LICENSE](./LICENSE). Los datos de la DGEG **no** están cubiertos por esta licencia; son información pública del Estado portugués.
