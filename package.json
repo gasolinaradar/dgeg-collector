@@ -1,6 +1,6 @@
 {
   "name": "@gasolinaradar/dgeg-collector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Collector for the official DGEG fuel station dataset (Portugal) returning normalized fuel stations",
   "main": "src/index.js",
   "exports": {
